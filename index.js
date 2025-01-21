@@ -2,6 +2,10 @@ console.log("Hello");
 console.log(getComputerChoice());
 console.log(getHumanChoice());
 
+// Variables for keeping track of score
+let humanScore = 0;
+let computerScore = 0;
+
 // Ok first making a function which will return the computer's choice
 function getComputerChoice()
 {
@@ -24,15 +28,19 @@ function getComputerChoice()
     }
 }
 
+// Function to get human choice
 function getHumanChoice()
 {
     // Getting user input and converting to int
-    let choice = parseInt(prompt("Select your Hand: 1) Rock 2) Paper 3) Scissor"));
+    let choice = parseString(prompt("Select your Hand: 1) Rock 2) Paper 3) Scissor"));
 
-    // Making decision and returning data
-    if (choice == 1) return "rock";
-    else if (choice == 2) return "paper";
-    else return "scissor";
+    // Returning data
+    return choice;
+
+}
+
+function playRound( computerChoice = getComputerChoice(), playerChoice = getHumanChoice() )
+{
 
 }
 
