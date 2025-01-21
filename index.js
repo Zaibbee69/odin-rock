@@ -1,11 +1,3 @@
-console.log("Hello");
-console.log(getComputerChoice());
-console.log(getHumanChoice());
-
-// Variables for keeping track of score
-let humanScore = 0;
-let computerScore = 0;
-
 // Ok first making a function which will return the computer's choice
 function getComputerChoice()
 {
@@ -32,16 +24,39 @@ function getComputerChoice()
 function getHumanChoice()
 {
     // Getting user input and converting to int
-    let choice = parseString(prompt("Select your Hand: 1) Rock 2) Paper 3) Scissor"));
+    let choice = prompt("Select your Hand: Rock, Paper, Scissor").toLowerCase();
 
     // Returning data
     return choice;
-
 }
 
-function playRound( computerChoice = getComputerChoice(), playerChoice = getHumanChoice() )
+// Plays a single round of game
+function playRound( computerChoice, humanChoice )
 {
 
+    // First Checking if the game was a draw or not
+    if (computerChoice == humanChoice)
+    {
+        console.log("It's a Tie! Both selected same");
+    }
+
+    // Now making decision of the game
+
+    else if ((computerChoice == "rock" && humanChoice == "paper") 
+        || (computerChoice == "paper" && humanChoice == "scissor") 
+        || (computerChoice == "scissor" && humanChoice == "rock" ))
+    {
+        humanScore ++;
+        console.log(`You Win! ${humanChoice} Beats ${computerChoice}`);
+    }
+
+    else 
+    {
+        computerScore ++;
+        console.log(`You Lose! ${computerChoice} Beats ${humanChoice}`);
+    }
+
+    console.log(`Current Score: Human: ${humanScore} Computer: ${computerScore}`);
 }
 
 // Function to get the random number
@@ -49,3 +64,15 @@ function getRandomInt()
 {
     return Math.floor(Math.random() * 3);
 }
+
+// Getting the choices
+const computerChoice = getComputerChoice();
+console.log(computerChoice);
+const humanChoice = getHumanChoice();
+
+// Variables for keeping track of score
+let humanScore = 0;
+let computerScore = 0;
+
+playRound( computerChoice, humanChoice );
+
