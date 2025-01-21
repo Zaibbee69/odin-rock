@@ -1,3 +1,16 @@
+const rounds = 5;
+
+// Variables for keeping track of score
+let humanScore = 0;
+let computerScore = 0;
+
+
+// Function to get the random number
+function getRandomInt()
+{
+    return Math.floor(Math.random() * 3);
+}
+
 // Ok first making a function which will return the computer's choice
 function getComputerChoice()
 {
@@ -31,8 +44,15 @@ function getHumanChoice()
 }
 
 // Plays a single round of game
-function playRound( computerChoice, humanChoice )
+function playRound()
 {
+
+    // Getting the choices
+    const computerChoice = getComputerChoice();
+
+    console.log(computerChoice);
+
+    const humanChoice = getHumanChoice();
 
     // First Checking if the game was a draw or not
     if (computerChoice == humanChoice)
@@ -59,20 +79,30 @@ function playRound( computerChoice, humanChoice )
     console.log(`Current Score: Human: ${humanScore} Computer: ${computerScore}`);
 }
 
-// Function to get the random number
-function getRandomInt()
+function playGame()
 {
-    return Math.floor(Math.random() * 3);
+    // Now playing 5 games
+    for (let i = 0; i < 5; i++)
+    {
+        playRound();
+    }
+
+    // Now checking who won
+    if (humanScore > computerScore)
+    {
+        console.log("You Win!");
+    }
+
+    else if (humanScore < computerScore)
+    {
+        console.log("You Lose!");
+    }
+
+    else
+    {
+        console.log("It's a Tie!");
+    }
 }
 
-// Getting the choices
-const computerChoice = getComputerChoice();
-console.log(computerChoice);
-const humanChoice = getHumanChoice();
-
-// Variables for keeping track of score
-let humanScore = 0;
-let computerScore = 0;
-
-playRound( computerChoice, humanChoice );
-
+// Now playing 5 games
+playGame();
